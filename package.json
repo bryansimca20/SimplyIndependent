@@ -1,0 +1,27 @@
+{
+  "name": "simplyindependent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon --delay 1500ms index.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "bash build.sh && npm run start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "concurrently": "^6.0.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
