@@ -1,18 +1,38 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors')
+const mongoose = require('mongoose');
 const createError = require('http-errors');
 const path = require('path');
 
+require('dotenv').config();
+
 const app = express();
 
+const uri = `mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@simply-indepdent-cluste.tl7d3.mongodb.net/${process.env.DBCLUSTER}?retryWrites=true&w=majority`
+
+/**
+ * Setup Mongoose Connections
+ */
+ mongoose.connect(
+  uri,
+  {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+})
+const db = mongoose.connection;
+db.on("error", err => console.log(err))
+db.once("open", () => {
+  console.log("connection to Simply Independent database established")
+})
 
 // Middleware declaration
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
+app.use(cors())
 
 // Setup routes to start with /api
 const routes = require('./routes/routes');
