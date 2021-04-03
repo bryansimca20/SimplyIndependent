@@ -10,7 +10,7 @@ require('dotenv').config();
 
 const app = express();
 
-const uri = `mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@simply-indepdent-cluste.tl7d3.mongodb.net/${process.env.DBCLUSTER}?retryWrites=true&w=majority`
+const uri = `mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@main-cluster.tl7d3.mongodb.net/${process.env.DBCLUSTER}?retryWrites=true&w=majority`
 
 /**
  * Setup Mongoose Connections
